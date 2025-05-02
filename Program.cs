@@ -11,10 +11,23 @@ class Program
 {
     static async Task<int> Main(string[] args)
     {
-        var outputDirectoryStr = new Option<DirectoryInfo?>(
+        var outputDirectory = new Option<DirectoryInfo?>(
             name: "--directory",
             description: "Output directory for the key files."
         );
+
+        var rootCommand = new RootCommand("Generate a private and public key pair.");
+        rootCommand.AddOption(outputDirectory);
+
+        rootCommand.SetHandler(
+            (directory) =>
+            {
+                CreateDirIfNotExist(directory!);
+            },
+            outputDirectory
+        );
+
+        return await rootCommand.InvokeAsync(args);
     }
 
     static void CreateDirIfNotExist(DirectoryInfo directory)

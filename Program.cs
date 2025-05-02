@@ -31,7 +31,8 @@ class Program
     }
 
     /// <summary>
-    /// Creates the directory specified if it does not exist.
+    /// Creates the directory specified if it does not exist at
+    /// (<paramref name="directory" />).
     /// </summary>
     /// <param name="directory">Path to directory to create.</param>
     static void CreateDirIfNotExist(DirectoryInfo directory)

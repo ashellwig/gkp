@@ -30,6 +30,10 @@ class Program
         return await rootCommand.InvokeAsync(args);
     }
 
+    /// <summary>
+    /// Creates the directory specified if it does not exist.
+    /// </summary>
+    /// <param name="directory">Path to directory to create.</param>
     static void CreateDirIfNotExist(DirectoryInfo directory)
     {
         try
@@ -44,5 +48,6 @@ class Program
         {
             Console.WriteLine("Failed to create the directory: {0}", e.ToString());
         }
+        finally { }
     }
 }
